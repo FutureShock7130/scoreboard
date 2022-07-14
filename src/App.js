@@ -20,8 +20,22 @@ function App() {
     blueScore: 0
   });
 
+  const [redScore, setRedScore] = useState(0);
+  const [blueScore, setBlueScore] = useState(0);
+
   const storeVariables = () => {
     localStorage.setItem('scores', scores);
+  }
+
+  const handleScore = (keyName, dScore) => {
+    let tempScores = scores;
+    let keyScore = tempScores[keyName];
+    
+    tempScores[keyName] = keyScore + (dScore);
+    
+    setScores(tempScores);
+    setRedScore(scores.redScore);
+    setBlueScore(scores.blueScore);
   }
 
   useEffect(() => {
@@ -31,13 +45,14 @@ function App() {
 
   useEffect(() => {
     console.log("App Update");
-  }, [scores])
+    console.log(scores);
+  }, [scores.blueScore, scores.redScore])
     
   return (
     <Routes>
       <Route index path="" element={<Home />} />
-      <Route path="dashboard" element={<Dashboard scores={scores} setScores={setScores} />} />
-      <Route path="display" element={<Display />} />
+      <Route path="dashboard" element={<Dashboard scores={scores} setScores={setScores} handleScore={handleScore} />} />
+      <Route path="display" element={<Display scores={scores} />} />
     </Routes>
   )
 }

@@ -3,19 +3,19 @@ import { Col, Container, Row } from "react-bootstrap";
 
 function InputDisplay(props) {
     useEffect(() => {
-
-    }, [props.blueScore, props.redScore])
+        console.log(props.scores);
+    }, [props.scores]);
     return (
         <Container>
             <Row>
                 <Col>
-                <div className="score-display d-flex justify-content-center h1">
-                    { props.blueScore }
+                <div className="d-flex justify-content-center h1">
+                    { props.scores.blueScore }
                 </div>
                 </Col>
                 <Col>
-                <div className="score-display d-flex justify-content-center h1">
-                    { props.redScore }
+                <div className="d-flex justify-content-center h1">
+                    { props.scores.redScore }
                 </div>
                 </Col>
             </Row>

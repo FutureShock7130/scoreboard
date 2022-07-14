@@ -25,6 +25,7 @@ function Dashboard(props) {
             <Col className="my-2 input">
                 <InputModal 
                     setScores={props.setScores}
+                    handleScore={props.handleScore}
                     scores={props.scores} 
                     handleShow={handleShow} 
                     handleClose={handleClose} 

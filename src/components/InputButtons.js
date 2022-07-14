@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import { useState } from "react";
 import { ButtonGroup, Button, Container, Col, Row } from "react-bootstrap";
 
@@ -13,21 +14,20 @@ function InputButtons(props) {
     }
 
     const penaltyScores = {
-        "犯規": 4,
-        "技術犯規": 8,
-        'DQ': "DQ",
-        "Disabled": "Disabled",
+        "犯規": -4,
+        "技術犯規": -8,
+        "Disabled": NaN,
     }
 
-    const handleScore = (keyName, dScore) => {
-        let tempScores = props.scores;
-        let keyScore = tempScores[keyName];
-    
-        tempScores[keyName] = keyScore + dScore;
-    
-        props.setScores(tempScores);
-        console.log(props.scores)
-    }
+    // const handleScore = (keyName, dScore) => {
+    //     let tempScores = props.scores;
+    //     let keyScore = tempScores[keyName];
+        
+    //     tempScores[keyName] = keyScore + (dScore);
+        
+    //     props.setScores(tempScores);
+    //     console.log(props.scores);
+    // }
 
     return (
         <Container className="input-btns">
@@ -36,7 +36,7 @@ function InputButtons(props) {
                 <div className="h3"> Blue Alliance </div>
                 { Object.keys(scores).map(
                     (key, index) => (
-                        <Button key={index} className="my-2 mx-2 px-4" onClick={ () => {handleScore("blueScore", scores[key])} }>
+                        <Button key={index} className="my-2 mx-2 px-4" onClick={ () => {props.handleScore("blueScore", scores[key])} }>
                             { key }
                         </Button>
                     )
@@ -44,7 +44,7 @@ function InputButtons(props) {
                 <br></br>
                 { Object.keys(penaltyScores).map(
                     (key, index) => (
-                        <Button key={index} className="my-2 mx-2 px-4" variant="secondary" onClick={ () => {handleScore("blueScore", scores[key])} }> 
+                        <Button key={index} className="my-2 mx-2 px-4" variant="secondary" onClick={ () => {props.handleScore("blueScore", penaltyScores[key])} }> 
                             { key }
                         </Button>
                     )
@@ -54,7 +54,7 @@ function InputButtons(props) {
                 <div className="h3"> Red Alliance </div>
                 { Object.keys(scores).map(
                     (key, index) => (
-                        <Button key={index} className="my-2 mx-2 px-4" variant="danger" onClick={ () => {handleScore("redScore", scores[key])} }>
+                        <Button key={index} className="my-2 mx-2 px-4" variant="danger" onClick={ () => {props.handleScore("redScore", scores[key])} }>
                             { key }
                         </Button>
                     )
@@ -62,7 +62,7 @@ function InputButtons(props) {
                 <br></br>
                 { Object.keys(penaltyScores).map(
                     (key, index) => (
-                        <Button key={index} className="my-2 mx-2 px-4" variant="secondary" onClick={ () => {handleScore("redScore", scores[key])} }>
+                        <Button key={index} className="my-2 mx-2 px-4" variant="secondary" onClick={ () => {props.handleScore("redScore", penaltyScores[key])} }>
                             { key }
                         </Button>
                     )

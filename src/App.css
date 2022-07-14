@@ -1,7 +1,11 @@
-.app, #links {
+.app, #links, .score-display {
   height: 100vh;
 }
 
 .input {
   display: none;
+}
+
+.display-text {
+  font-size: 100px;
 }
