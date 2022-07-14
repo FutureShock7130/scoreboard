@@ -27,12 +27,16 @@ function App() {
   useEffect(() => {
     document.title = TITLE;
     storeVariables();
-  });
+  })
 
+  useEffect(() => {
+    console.log("App Update");
+  }, [scores])
+    
   return (
     <Routes>
       <Route index path="" element={<Home />} />
-      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="dashboard" element={<Dashboard scores={scores} setScores={setScores} />} />
       <Route path="display" element={<Display />} />
     </Routes>
   )

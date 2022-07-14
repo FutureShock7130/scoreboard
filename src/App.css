@@ -1,3 +1,7 @@
 .app, #links {
   height: 100vh;
 }
+
+.input {
+  display: none;
+}
