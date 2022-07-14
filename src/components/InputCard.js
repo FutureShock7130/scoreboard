@@ -1,5 +1,5 @@
-function InputCard() {
-
+function InputCard(props) {
+    
 }
 
 export default InputCard;
